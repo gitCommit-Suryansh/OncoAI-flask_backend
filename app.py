@@ -18,7 +18,7 @@ if not os.path.exists(MODEL_PATH):
     gdown.download(MODEL_URL, MODEL_PATH, fuzzy=True, quiet=False)
 
 # Load the model
-model = load_model(MODEL_PATH)
+model = load_model(MODEL_PATH, compile=False)
 class_names = ["Glioma", "Meningioma", "No Tumor", "Pituitary"]
 
 def predict_image(img_path):
