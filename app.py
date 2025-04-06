@@ -8,16 +8,16 @@ import gdown
 
 app = Flask(__name__)
 
-# Google Drive file ID and destination
+# Google Drive file URL and destination
 MODEL_URL = "https://drive.google.com/file/d/1-0LxgX0aQB83eBIbORZ8HM38Kxyfv_8E/view?usp=drive_link"
 MODEL_PATH = "model.h5"
 
-# Download the model if not present
+# Download the model if not already present
 if not os.path.exists(MODEL_PATH):
     print("🔽 Downloading model from Google Drive...")
-    gdown.download(MODEL_URL, MODEL_PATH, quiet=False)
+    gdown.download(MODEL_URL, MODEL_PATH, fuzzy=True, quiet=False)
 
-# Load model
+# Load the model
 model = load_model(MODEL_PATH)
 class_names = ["Glioma", "Meningioma", "No Tumor", "Pituitary"]
 
